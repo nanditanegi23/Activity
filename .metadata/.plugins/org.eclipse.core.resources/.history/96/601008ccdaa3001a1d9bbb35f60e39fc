@@ -1,0 +1,13 @@
+package com.ibm.productservice.client;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient("MS2")
+public interface RestClient {
+	
+	@GetMapping("/{name}")
+	public Long getTax(@PathVariable(value="name") String name);
+
+}

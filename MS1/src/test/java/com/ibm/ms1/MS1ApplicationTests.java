@@ -1,0 +1,13 @@
+package com.ibm.ms1;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MS1ApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

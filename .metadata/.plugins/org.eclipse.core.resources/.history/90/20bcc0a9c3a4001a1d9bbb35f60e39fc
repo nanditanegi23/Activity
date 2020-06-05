@@ -1,0 +1,12 @@
+package com.ibm.MS2.client;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient("MS1")
+public interface RestClient {
+	
+	@GetMapping("/getConversionFactor/{countryCode}")
+	public Long getTax(@PathVariable(value="countryCode") String countryCode);
+
+}

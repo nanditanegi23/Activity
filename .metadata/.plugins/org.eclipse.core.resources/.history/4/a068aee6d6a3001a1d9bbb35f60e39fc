@@ -1,0 +1,10 @@
+package com.ibm.productservice.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+@Repository
+import com.ibm.productservice.domain.Conversion;
+
+public interface ConversionRepository extends JpaRepository<Conversion, String> {
+
+}

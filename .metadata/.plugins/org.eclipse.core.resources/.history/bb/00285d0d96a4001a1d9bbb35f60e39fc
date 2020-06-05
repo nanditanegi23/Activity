@@ -1,0 +1,51 @@
+package com.ibm.ms1.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ibm.ms1.dto.ConversionDTO;
+import com.ibm.ms1.service.MS1Service;
+
+@RefreshScope
+@RestController
+public class MS1Controller {
+	
+	@Autowired
+	MS1Service ms1Service;
+	
+	
+	@PostMapping("addConversionFactor")
+	public ResponseEntity.BodyBuilder addConversionFactor(@RequestBody ConversionDTO conversionDTO) {
+//		return ResponseEntity.ok().body(ms1Service.addFactor(conversionDTO));
+		return ResponseEntity.status(ms1Service.addFactor(conversionDTO)));
+	}
+	
+
+	@GetMapping("getConversionFactor/{countryCode}")
+	public ResponseEntity<ConversionDTO> getConversionFactor(@PathVariable(value="countryCode") String countryCode) {
+		
+					
+		return ResponseEntity.ok().body(ms1Service.getDetails(countryCode));
+		
+	}
+	
+	
+	@PutMapping("updateConversionFactor")
+	public ResponseEntity<ConversionDTO> updateConversinFactor(@RequestBody ConversionDTO conversionDTO){
+		
+		return ResponseEntity.ok().body(ms1Service.updateDetails(conversionDTO));
+	}
+	
+	@GetMapping("test")
+	public String hello() {
+		
+		return "welcome to spring boot: Boot camp session: second day";
+	}
+}

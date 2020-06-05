@@ -1,0 +1,35 @@
+package com.ibm.ms1.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="conversion")
+public class Conversion {
+
+	@Id
+	@Column(name= "Code")
+	private String countryCode;
+
+	@Column(name= "Factor")
+	private Double conversionFactor;
+
+	public String getCountryCode() {
+		return countryCode;
+	}
+
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
+
+	public Double getConversionFactor() {
+		return conversionFactor;
+	}
+
+	public void setConversionFactor(Double conversionFactor) {
+		this.conversionFactor = conversionFactor;
+	}
+	
+}

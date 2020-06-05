@@ -1,0 +1,11 @@
+package com.ibm.productservice.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(value="conversion")
+public class Conversion {
+
+	
+}

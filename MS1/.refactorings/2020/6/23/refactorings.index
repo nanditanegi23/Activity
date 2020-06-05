@@ -1,0 +1,34 @@
+1590995677618	Rename type 'ProductServiceApplication'
+1590995737923	Rename type 'ProductController'
+1590995772203	Rename type 'MS1'
+1590995788324	Rename type 'ProductService'
+1590995805085	Rename type 'ConversionRepository'
+1591003211388	Rename resource 'test'
+1591006779301	Delete element
+1591007055680	Delete elements
+1591007069443	Delete element
+1591007290957	Rename package 'com.ibm.productservice.client'
+1591007302609	Rename package 'com.ibm.productservice.config'
+1591007313556	Rename package 'com.ibm.productservice.controller'
+1591007331749	Rename package 'com.ibm.productservice.domain'
+1591007341817	Rename package 'com.ibm.productservice.dto'
+1591007353263	Rename package 'com.ibm.pms1.dto'
+1591007364109	Rename package 'com.ibm.productservice.repository'
+1591007375469	Rename package 'com.ibm.productservice.service'
+1591007415424	Rename compilation unit 'ProductServiceApplicationTests.java'
+1591007436088	Rename compilation unit 'MS1ApplicationTests.java'
+1591007449900	Rename package 'com.ibm.productservice'
+1591008623879	Rename type 'MS1'
+1591008652336	Rename type 'MS1Tests'
+1591009010924	Rename compilation unit 'MS1Application.java'
+1591009128934	Rename type 'ProductServiceApplication'
+1591009139145	Rename package 'com.ibm.pms1.controller'
+1591009240424	Copy compilation unit
+1591078299117	Copy package
+1591078328602	Delete element
+1591097130980	Copy compilation unit
+1591165813826	Delete element
+1591248701131	Delete element
+1591249842136	Delete elements
+1591250496329	Delete elements
+1591251169506	Delete elements

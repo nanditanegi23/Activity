@@ -1,0 +1,53 @@
+package com.ibm.MS2.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.ibm.MS2.client.RestClient;
+import com.ibm.MS2.domain.ConversionDTO;
+import com.ibm.MS2.domain.Currency;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@Service
+public class MS2Service {
+	
+final RestClient restClient;
+	
+	@Autowired
+	public MS2Service(RestClient restClient) {
+		this.restClient=restClient;
+	}
+	
+
+	@HystrixCommand(fallbackMethod="conversionFactorFallback")
+	public Double calculateCurrency(Currency currency) {
+		// TODO Auto-generated method stub
+		Double conversionFactor=0.0;
+		ResponseEntity<ConversionDTO> dto= restClient.getConversionFactor(currency.getCountryCode());
+		if(HttpStatus.OK.equals(dto.getStatusCode())) {
+			ConversionDTO newDto= dto.getBody();
+			conversionFactor= newDto.getConversionFactor();
+		}
+		
+		Double amount= currency.getAmount();
+		return amount*conversionFactor;
+	}
+
+	
+public Double conversionFactorFallback(Currency currency) {
+//		
+//		Optional<Product> product= productRepository.findById(id);
+//		ProductDTO productDTO=null;
+//		if(product.isPresent()) {
+//			
+//			ProductMapper mapper=new ProductMapper();
+//			 productDTO=mapper.convertProductToProductDTO(product.get());
+//			 productDTO.setTax(3L);
+//		}
+//		
+//		return productDTO;
+	return 0.0;
+	}
+}

@@ -1,0 +1,24 @@
+package com.ibm.productservice.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="conversion")
+public class Conversion {
+
+	@Id
+	@Column(name= "countrycode")
+	private String countryCode;
+
+	@Column(name= "countryName")
+	private String countryName;
+	
+	private String conversionFactor;
+	
+	private Long amount;
+}

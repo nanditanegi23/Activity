@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: Product-Service  profiles:    active: production  cloud:    config:      uri: http://localhost:8101
+server:  port: 8089
+
+management:  endpoints:    web:      exposure:        include: "*"        
+                 

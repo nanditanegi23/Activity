@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: MS2
+  profiles:
+    active: production
+  cloud:
+    config:
+      uri: http://localhost:8888
+      
+  zipkin:
+    base-url: http://192.168.99.100:9411/  
+  
+  sleuth:
+    sampler:
+      probability: 1.0      
+    trace-id128: true
+    
+logging:
+  level:
+    com.ibm.MS2 : TRACE
+    org.springframework: INFO
+
+server:
+  port: 8090
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

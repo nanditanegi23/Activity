@@ -1,0 +1,30 @@
+package com.ibm.MS2.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+@RefreshScope
+@RestController
+public class MS2Controller {
+	private static Logger logger= LoggerFactory.getLogger(MS2Controller.class);
+	
+	@GetMapping("/tax/{name}")
+	public Long getTax(@PathVariable(value="name") String name) {
+		logger.info("Inside TaxController:"+name);
+		
+		
+			if(name.equals("Apple")){
+				return 10L;
+			}else if (name.equals("Orange")) {
+			     return 8L;
+			}		
+			else {
+			return 5L;
+			}
+	}
+
+}

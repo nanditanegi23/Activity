@@ -1,0 +1,5 @@
+package com.ibm.productservice.repository;
+
+public interface ConversionRepository {
+
+}

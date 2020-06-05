@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS conversion;
+CREATE TABLE conversion ( countryCode  VARCHAR(10) PRIMARY KEY, conversionFactor decimal(30,2) NOT NULL);  
+INSERT INTO product (countryCode,conversionFactor) VALUES
+('Apple', 100,8000,5.2),
+  ('Samsung', 250, 5000,10.5),
+  ('OnePlus', 425,7000,11);

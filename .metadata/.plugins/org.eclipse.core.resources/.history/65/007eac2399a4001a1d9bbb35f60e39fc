@@ -1,0 +1,8 @@
+package com.ibm.MS2.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MS2Service {
+
+}

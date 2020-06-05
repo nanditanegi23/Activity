@@ -1,0 +1,40 @@
+package com.ibm.MS2.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.ibm.MS2.client.RestClient;
+import com.ibm.MS2.domain.ConversionDTO;
+import com.ibm.MS2.domain.Currency;
+
+@Service
+public class MS2Service {
+	
+final RestClient restClient;
+	
+	@Autowired
+	public MS2Service(RestClient restClient) {
+		this.restClient=restClient;
+	}
+	
+
+	public void calculateCurrency(Currency currency) {
+		// TODO Auto-generated method stub
+		Double conversionFactor=0.0;
+		ResponseEntity<ConversionDTO> dto= restClient.getConversionFactor(currency.getCountryCode());
+		if(HttpStatus.OK.equals(dto.getStatusCode())) {
+			ConversionDTO newDto= dto.getBody();
+			conversionFactor= newDto.getConversionFactor();
+		}
+		
+		Double amount= currency.getAmount();
+		return amount*conversionFactor;
+	}
+
+	
+	
+//	 Long tax= restClient.getTax(productDTO.getProductName());
+//	 productDTO.setTax(tax);
+}

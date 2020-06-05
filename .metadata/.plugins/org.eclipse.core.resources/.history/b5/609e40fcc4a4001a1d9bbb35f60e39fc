@@ -1,0 +1,28 @@
+package com.ibm.MS2.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ibm.MS2.domain.Currency;
+import com.ibm.MS2.service.MS2Service;
+
+@RefreshScope
+@RestController
+public class MS2Controller {
+	
+	@Autowired
+	MS2Service service;
+//	private static Logger logger= LoggerFactory.getLogger(MS2Controller.class);
+	
+	@GetMapping("/convertCurrency")
+	public ResponseEntity<Currency> getAmount(@RequestBody Currency currency) {
+//		logger.info("Inside TaxController:"+name);
+		service.calculateCurrency(currency);
+		return null;
+	}
+
+}

@@ -1,0 +1,4 @@
+ADD openjdk:8
+ADD target/MS2.jar MS2-docker.jar
+EXPOSE 8090
+ENTRYPOINT ["java", "-jar", "MS2.jar"]

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.ibm.productservice.config&apos; to &apos;MS2/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;ProductService&apos;&#x0D;&#x0A;- Destination element: &apos;MS2/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;ProductService/src/main/java/com.ibm.productservice.config&apos;" description="Copy package" destination="=MS2/src\/main\/java" element1="/src\/main\/java&lt;com.ibm.productservice.config" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1591097869195" version="1.0"/>
+</session>

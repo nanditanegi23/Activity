@@ -1,0 +1,19 @@
+package com.ibm.MS2.client;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.ibm.MS2.domain.ConversionDTO;
+
+@FeignClient("MS1")
+public interface RestClient {
+	
+	@GetMapping("/getConversionFactor/{countryCode}")
+	public ResponseEntity<ConversionDTO> getConversionFactor(@PathVariable(value="countryCode") String countryCode);
+	
+	public ResponseEntity<ConversionDTO> getConversionFactor(@PathVariable(value="countryCode") String countryCode) {
+	
+
+}

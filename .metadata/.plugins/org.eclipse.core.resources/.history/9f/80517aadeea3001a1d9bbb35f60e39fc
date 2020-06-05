@@ -1,0 +1,481 @@
+package com.ibm.productservice.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.ibm.productservice.domain.Conversion;
+import com.ibm.productservice.domain.Product;
+import com.ibm.productservice.dto.ConversionDTO;
+import com.ibm.productservice.dto.ConversionMApper;
+import com.ibm.productservice.dto.ProductDTO;
+import com.ibm.productservice.dto.ProductMapper;
+import com.ibm.productservice.repository.MS1Repository;
+import com.ibm.productservice.repository.ProductRepository;
+
+@Service
+public class MS1Service {
+
+//	@Autowired
+//	ProductRepository productRepository;
+	
+	@Autowired 
+	MS1Repository repo;
+
+//	final RestClient restClient;
+//	
+//	@Autowired
+//	public ProductService(RestClient restClient) {
+//		this.restClient=restClient;
+//	}
+
+//	public ProductDTO getProductById(Long id) {
+//		Optional<Product> product = productRepository.findById(id);
+//		ProductDTO productDTO = null;
+//		if (product.isPresent()) {
+//
+//			ProductMapper mapper = new ProductMapper();
+//			productDTO = mapper.convertProductToProductDTO(product.get());
+////			 Long tax= restClient.getTax(productDTO.getProductName());
+////			 productDTO.setTax(tax);
+//		}
+//
+//		return productDTO;
+//	}
+//
+//	public ProductDTO createProduct(ProductDTO dto) {
+//
+//		ProductMapper mapper = new ProductMapper();
+//		Product product = mapper.convertProductDTOToProduct(dto);
+//
+//		Product product1 = productRepository.save(product);
+//		return mapper.convertProductToProductDTO(product1);
+//
+//	}
+//
+//	public void deleteProduct(Long id) {
+//		productRepository.delete(productRepository.findById(id).get());
+//
+//	}
+//
+//	public ProductDTO getProductByName(String name) {
+//		Product product = productRepository.findByProductName(name);
+//		ProductMapper mapper = new ProductMapper();
+//		return mapper.convertProductToProductDTO(product);
+//
+//	}
+
+	public ConversionDTO addFactor(ConversionDTO dto) {
+		// TODO Auto-generated method stub
+
+		ConversionMApper mapper = new ConversionMApper();
+		Conversion conversion = mapper.convertConversionDTOToConversion(dto);
+
+		Conversion convert = repo.save(conversion);
+		return mapper.convertConversionToConversionDTO(convert);
+
+	}
+
+	public ConversionDTO getDetails(String countryCode) {
+		// TODO Auto-generated method stub
+
+		Conversion conversion = repo.findByCountryCode(countryCode);
+
+			ConversionMApper mapper = new ConversionMApper();
+			return  mapper.convertConversionToConversionDTO(conversion);
+//			 Long tax= restClient.getTax(productDTO.getProductName());
+//			 productDTO.setTax(tax);
+
+	}
+
+	public ConversionDTO updateDetails(ConversionDTO conversionDTO) {
+		// TODO Auto-generated method stub
+		2020-06-01 13:38:50.944  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 13:43:50.914  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 13:48:50.882  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 19:18:45.761  INFO [Tax-Service,,,] 12704 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_TAX-SERVICE/Tax-Service:-955293798 - Re-registering apps/TAX-SERVICE
+		2020-06-01 19:18:46.744  INFO [Tax-Service,,,] 12704 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_TAX-SERVICE/Tax-Service:-955293798: registering service...
+		2020-06-01 19:18:57.030  WARN [Tax-Service,,,] 12704 --- [scoveryClient-1] c.netflix.discovery.TimedSupervisorTask  : task supervisor timed out
+
+		java.util.concurrent.TimeoutException: null
+			at java.util.concurrent.FutureTask.get(Unknown Source) [na:1.8.0_161]
+			at com.netflix.discovery.TimedSupervisorTask.run(TimedSupervisorTask.java:68) ~[eureka-client-1.9.17.jar:1.9.17]
+			at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [na:1.8.0_161]
+			at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.8.0_161]
+			at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source) [na:1.8.0_161]
+			at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source) [na:1.8.0_161]
+			at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_161]
+			at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_161]
+			at java.lang.Thread.run(Unknown Source) [na:1.8.0_161]
+
+		2020-06-01 19:18:59.609  INFO [Tax-Service,,,] 12704 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_TAX-SERVICE/Tax-Service:-955293798 - registration status: 204
+		2020-06-01 19:19:09.575  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 14:47:33.564  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:47:33.564  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:47:33.564  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:47:33.564  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:47:33.564  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:47:33.564  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:47:33.565  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:47:33.569  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:48:33.573  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:48:33.573  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:48:33.573  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:48:33.573  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:48:33.573  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:48:33.573  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:48:33.573  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:48:33.579  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:49:33.584  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:49:33.584  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:49:33.584  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:49:33.584  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:49:33.584  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:49:33.584  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:49:33.584  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:49:33.589  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:50:33.593  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:50:33.595  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:50:33.595  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:50:33.595  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:50:33.596  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:50:33.596  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:50:33.596  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:50:33.600  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:51:33.604  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:51:33.605  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:51:33.605  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:51:33.605  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:51:33.605  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:51:33.605  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:51:33.605  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:51:33.609  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:51:50.768  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 14:52:33.612  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:52:33.612  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:52:33.612  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:52:33.612  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:52:33.612  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:52:33.612  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:52:33.612  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:52:33.616  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:53:33.615  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:53:33.615  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:53:33.615  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:53:33.615  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:53:33.615  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:53:33.615  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:53:33.615  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:53:33.620  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:54:33.621  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:54:33.621  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:54:33.621  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:54:33.621  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:54:33.621  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:54:33.622  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:54:33.622  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:54:33.626  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:55:33.627  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:55:33.627  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:55:33.627  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:55:33.627  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:55:33.627  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:55:33.627  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:55:33.627  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:55:33.631  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:56:33.632  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:56:33.632  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:56:33.632  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:56:33.632  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:56:33.632  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:56:33.632  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:56:33.632  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:56:33.638  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:56:50.741  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 14:57:33.637  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:57:33.637  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:57:33.637  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:57:33.637  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:57:33.637  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:57:33.637  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:57:33.637  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:57:33.642  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:58:33.643  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:58:33.643  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:58:33.643  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:58:33.643  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:58:33.643  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:58:33.643  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:58:33.643  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:58:33.646  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 14:59:33.648  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 14:59:33.648  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 14:59:33.648  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 14:59:33.648  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 14:59:33.648  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 14:59:33.648  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 14:59:33.648  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 14:59:33.653  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:00:33.655  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:00:33.655  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:00:33.655  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:00:33.655  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:00:33.655  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:00:33.655  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:00:33.655  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:00:33.658  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:01:33.660  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:01:33.660  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:01:33.660  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:01:33.660  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:01:33.660  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:01:33.660  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:01:33.660  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:01:33.665  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:01:50.710  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 15:02:33.668  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:02:33.668  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:02:33.668  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:02:33.668  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:02:33.668  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:02:33.668  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:02:33.668  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:02:33.673  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:03:33.673  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:03:33.673  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:03:33.673  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:03:33.673  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:03:33.673  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:03:33.673  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:03:33.673  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:03:33.677  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:04:33.682  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:04:33.682  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:04:33.682  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:04:33.682  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:04:33.682  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:04:33.682  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:04:33.682  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:04:33.686  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:05:33.713  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:05:33.713  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:05:33.713  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:05:33.713  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:05:33.713  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:05:33.713  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:05:33.713  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:05:33.716  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:06:33.758  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:06:33.758  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:06:33.758  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:06:33.758  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:06:33.758  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:06:33.758  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:06:33.758  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:06:33.762  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:06:50.746  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 15:07:33.789  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:07:33.789  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:07:33.789  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:07:33.789  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:07:33.789  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:07:33.789  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:07:33.789  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:07:33.794  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:08:33.820  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:08:33.820  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:08:33.820  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:08:33.820  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:08:33.820  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:08:33.820  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:08:33.820  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:08:33.824  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:09:33.849  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:09:33.849  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:09:33.849  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:09:33.849  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:09:33.849  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:09:33.849  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:09:33.849  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:09:33.852  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:10:33.867  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:10:33.867  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:10:33.867  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:10:33.867  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:10:33.867  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:10:33.867  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:10:33.867  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:10:33.870  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:11:33.882  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:11:33.882  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:11:33.882  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:11:33.882  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:11:33.882  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:11:33.882  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:11:33.882  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:11:33.886  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:11:50.811  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 15:12:33.899  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:12:33.899  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:12:33.899  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:12:33.899  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:12:33.899  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:12:33.899  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:12:33.899  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:12:33.904  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:13:33.917  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:13:33.917  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:13:33.917  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:13:33.917  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:13:33.917  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:13:33.917  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:13:33.917  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:13:33.921  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:14:33.932  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:14:33.932  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:14:33.932  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:14:33.932  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:14:33.932  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:14:33.932  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:14:33.932  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:14:33.935  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:15:33.942  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:15:33.942  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:15:33.942  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:15:33.942  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:15:33.942  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:15:33.942  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:15:33.942  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:15:33.948  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:16:33.953  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:16:33.953  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:16:33.953  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:16:33.953  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:16:33.953  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:16:33.953  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:16:33.953  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:16:33.957  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:16:50.822  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 15:17:33.963  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:17:33.963  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:17:33.963  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:17:33.963  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:17:33.963  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:17:33.963  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:17:33.963  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:17:33.968  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:18:33.975  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:18:33.975  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:18:33.976  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:18:33.976  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:18:33.976  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:18:33.976  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:18:33.976  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:18:33.980  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:19:33.986  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:19:33.986  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:19:33.986  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:19:33.986  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:19:33.986  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:19:33.986  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:19:33.986  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:19:33.990  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:20:33.995  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:20:33.995  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:20:33.995  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:20:33.995  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:20:33.995  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:20:33.995  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:20:33.995  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:20:34.000  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:21:34.006  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:21:34.006  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:21:34.006  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:21:34.006  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:21:34.006  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:21:34.006  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:21:34.006  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:21:34.009  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:21:50.822  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 15:22:34.033  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:22:34.033  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:22:34.033  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:22:34.033  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:22:34.033  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:22:34.033  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:22:34.033  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:22:34.038  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:23:34.064  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:23:34.064  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:23:34.064  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:23:34.064  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:23:34.064  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:23:34.064  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:23:34.064  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:23:34.069  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:24:34.092  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:24:34.092  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:24:34.092  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:24:34.092  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:24:34.092  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:24:34.092  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:24:34.092  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:24:34.096  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:25:34.120  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:25:34.120  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:25:34.120  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:25:34.120  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:25:34.120  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:25:34.120  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:25:34.120  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:25:34.124  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:26:34.147  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:26:34.147  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:26:34.147  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:26:34.147  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:26:34.147  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:26:34.147  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:26:34.147  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:26:34.151  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:26:50.908  INFO [Tax-Service,,,] 12704 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+		2020-06-01 15:27:34.159  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:27:34.159  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:27:34.159  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:27:34.159  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:27:34.159  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:27:34.159  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:27:34.159  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:27:34.163  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:28:34.174  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:28:34.174  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:28:34.174  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:28:34.174  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:28:34.174  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:28:34.174  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:28:34.174  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:28:34.177  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+		2020-06-01 15:29:34.190  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+		2020-06-01 15:29:34.190  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+		2020-06-01 15:29:34.190  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+		2020-06-01 15:29:34.190  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+		2020-06-01 15:29:34.190  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+		2020-06-01 15:29:34.190  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+		2020-06-01 15:29:34.190  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+		2020-06-01 15:29:34.194  INFO [Tax-Service,,,] 12704 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+
+		ConversionDTO dto = null;
+		if (conversion.isPresent()) {
+			
+			ConversionMApper mapper = new ConversionMApper();
+			Conversion conversionMap = mapper.convertConversionDTOToConversion(dto);
+
+			Conversion convert = repo.save(conversionMap);
+			dto= mapper.convertConversionToConversionDTO(convert);
+		}
+
+		return dto;
+	
+	}
+}

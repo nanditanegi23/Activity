@@ -1,0 +1,16 @@
+package com.ibm.MS2.client;
+
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient("MS1")
+@RibbonClient("MS1")
+public interface RestClient {
+	
+	@GetMapping("/getConversionFactor/{countryCode}")
+	public ResponseEntity<Double> getConversionFactor(@PathVariable(value="countryCode") String countryCode);
+	
+}

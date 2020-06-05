@@ -1,0 +1,20 @@
+package com.ibm.productservice.dto;
+
+import com.ibm.productservice.domain.Conversion;
+import com.ibm.productservice.domain.Product;
+
+public class ConversionMApper {
+
+	
+public ConversionDTO convertProductToProductDTO(Conversion conversion) {
+		
+	ConversionDTO conversionDTO=new ConversionDTO();
+	conversionDTO.setId(conversion.getId());
+	donversionDTO.setDiscount(conversion.getDiscount());
+		return conversionDTO;
+		
+	}
+	
+	public Product convertProductDTOToProduct(ProductDTO dto) {
+		
+}

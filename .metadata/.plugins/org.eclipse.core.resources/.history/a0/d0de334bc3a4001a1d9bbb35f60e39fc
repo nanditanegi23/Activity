@@ -1,0 +1,6 @@
+package com.ibm.MS2.domain;
+
+@Entity
+public class Currency {
+
+}

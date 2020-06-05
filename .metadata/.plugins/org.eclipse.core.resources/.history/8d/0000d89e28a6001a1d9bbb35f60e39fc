@@ -1,0 +1,4 @@
+ADD openjdk:8
+ADD target/MS1.jar ms1.jar
+EXPOSE 8089
+ENTRYPOINT ["java", "-jar", "MS1.jar"]

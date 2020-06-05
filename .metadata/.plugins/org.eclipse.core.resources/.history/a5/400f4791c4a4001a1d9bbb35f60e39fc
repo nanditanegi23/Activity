@@ -1,0 +1,30 @@
+package com.ibm.MS2.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ibm.MS2.client.RestClient;
+import com.ibm.MS2.domain.Currency;
+
+@Service
+public class MS2Service {
+	
+final RestClient restClient;
+	
+	@Autowired
+	public MS2Service(RestClient restClient) {
+		this.restClient=restClient;
+	}
+	
+
+	public void calculateCurrency(Currency currency) {
+		// TODO Auto-generated method stub
+		
+		restClient.getConversionFactor(currency.getCountryCode())
+	}
+
+	
+	
+//	 Long tax= restClient.getTax(productDTO.getProductName());
+//	 productDTO.setTax(tax);
+}

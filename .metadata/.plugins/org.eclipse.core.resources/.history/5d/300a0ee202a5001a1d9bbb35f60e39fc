@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: MS2
+
+server:
+  port: 8090
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
